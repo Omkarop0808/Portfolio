@@ -467,6 +467,11 @@
     margin-top: 1rem;
   }
   
+  .about-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
   .about-card {
     flex: 1;
     min-width: 300px;
@@ -501,6 +506,11 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 1rem;
+  }
+
+  .doing-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
   
   .doing-card {
