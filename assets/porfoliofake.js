@@ -4,27 +4,27 @@ const nextBtn = document.getElementById("nextBtn");
 let currentSlide = 0;
 const slides = document.querySelectorAll(".slide");
 const totalSlides = slides.length;
-
 function updateSlider() {
-  slidesWrapper.style.transition = "transform 0.5s ease-in-out";
   slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
-
 nextBtn.addEventListener("click", () => {
-  currentSlide = (currentSlide + 1) % totalSlides;
+  currentSlide++;
+  if (currentSlide >= totalSlides) {
+    currentSlide = 0;
+  }
   updateSlider();
 });
-
 prevBtn.addEventListener("click", () => {
-  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  currentSlide--;
+  if (currentSlide < 0) {
+    currentSlide = totalSlides - 1;
+  }
   updateSlider();
 });
 
-// Typing effect
-const typingTarget = document.getElementById("typing-text");
+const typingTarget = document.getElementById('typing-text');
 const textToType = "Hi, I'm Omkar Patil";
 let index = 0;
-
 function typeText() {
   if (index < textToType.length) {
     typingTarget.textContent += textToType.charAt(index);
@@ -39,21 +39,18 @@ function typeText() {
   }
 }
 typeText();
-
-// Fade Text Effect
-const fadeTextElement = document.getElementById("fade-text");
+const fadeTextElement = document.getElementById('fade-text');
 const titles = ["Web Developer", "Full Stack Developer"];
 let currentTitleIndex = 0;
-
 function fadeText() {
-  fadeTextElement.style.transition = "opacity 0.5s ease-in-out";
-  fadeTextElement.style.opacity = 0;
+  fadeTextElement.style.opacity = 1;
+  fadeTextElement.textContent = titles[currentTitleIndex];
   setTimeout(() => {
-    fadeTextElement.textContent = titles[currentTitleIndex];
-    fadeTextElement.style.opacity = 1;
+    fadeTextElement.style.opacity = 0;
+  }, 1000);
+  setTimeout(() => {
     currentTitleIndex = (currentTitleIndex + 1) % titles.length;
-  }, 500);
+  }, 1500);
 }
-
 fadeText();
 setInterval(fadeText, 2000);
